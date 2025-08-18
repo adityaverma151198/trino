@@ -22,7 +22,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.7.0
       - name: Lint charts
@@ -43,7 +43,7 @@ jobs:
           # skip cleanup to test deploying multiple releases in a single namespace
           - { label: overrides, args: '-s -t default,overrides' }
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up Helm
         uses: azure/setup-helm@v4
         with:
@@ -66,7 +66,7 @@ jobs:
         include:
           - { label: default, args: '' }
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up Helm
         uses: azure/setup-helm@v4
         with:
@@ -83,7 +83,7 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
@@ -96,11 +96,11 @@ jobs:
     if: github.event_name != 'pull_request'
     steps:
       - name: Checkout main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           path: main
       - name: Checkout gh-pages
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: gh-pages
           path: gh-pages
@@ -124,7 +124,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Configure Git
